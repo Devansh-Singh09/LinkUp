@@ -1,7 +1,7 @@
 
 import { Navigate, Route, Routes } from 'react-router'
 import HomePage from './pages/HomePage.jsx'
-import SignupPage from './pages/SignupPage.jsx'
+import SignUpPage from './pages/SignupPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import OnboardingPage from './pages/OnboardingPage.jsx'
 import NotificationsPage from './pages/NotificationsPage.jsx'
