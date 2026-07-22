@@ -6,6 +6,8 @@ import LoginPage from './pages/LoginPage.jsx'
 import OnboardingPage from './pages/OnboardingPage.jsx'
 import NotificationsPage from './pages/NotificationsPage.jsx'
 import CallPage from './pages/CallPage.jsx'
+import FriendsPage from './pages/FriendsPage.jsx'
+
 import ChatPage from './pages/ChatPage.jsx'
 import { Toaster } from 'react-hot-toast'
 
@@ -48,6 +50,11 @@ const App = () => {
         <Route path="/notifications" element={isAuthenticated && isOnboarded ? (
           <Layout showSidebar={true}><NotificationsPage /></Layout>
         ): (
+          <Navigate to = {!isAuthenticated ? "/login" : "/onboarding"} />
+        )} />
+        <Route path="/friends" element={isAuthenticated && isOnboarded ? (
+          <Layout showSidebar={true}><FriendsPage /></Layout>
+        ) : (
           <Navigate to = {!isAuthenticated ? "/login" : "/onboarding"} />
         )} />
         <Route path="/call/:id" element={isAuthenticated && isOnboarded ? (
