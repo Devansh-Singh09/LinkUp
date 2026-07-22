@@ -106,10 +106,21 @@ const NotificationsPage = () => {
                     <div key={notification._id} className="card bg-base-200 shadow-sm">
                       <div className="card-body p-4">
                         <div className="flex items-start gap-3">
-                          <div className="avatar mt-1 size-10 rounded-full">
+                          <div className="avatar mt-1 size-10 rounded-full overflow-hidden">
                             <img
-                              src={notification.recipient.profilePicture}
+                              src={
+                                notification.recipient.profilePicture ||
+                                notification.recipient.profilePic ||
+                                `https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(
+                                  notification.recipient.fullname || 'user'
+                                )}`
+                              }
                               alt={notification.recipient.fullname}
+                              onError={(e) => {
+                                e.currentTarget.src = `https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(
+                                  notification.recipient.fullname || 'user'
+                                )}`;
+                              }}
                             />
                           </div>
                           <div className="flex-1">
