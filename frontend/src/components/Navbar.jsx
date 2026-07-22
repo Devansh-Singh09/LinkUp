@@ -41,8 +41,17 @@ const Navbar = () => {
 
            <ThemeSelector />
            <div className="avatar">
-            <div className="w-9 rounded-full">
-              <img src={authUser?.profilePicture} alt="User Avatar" rel="noreferrer" />
+            <div className="w-9 rounded-full overflow-hidden">
+              <img
+                src={
+                  authUser?.profilePicture ||
+                  `https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(
+                    authUser?.fullname || 'user'
+                  )}`
+                }
+                alt="User Avatar"
+                rel="noreferrer"
+              />
             </div>
           </div>
 
