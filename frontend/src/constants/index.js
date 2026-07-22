@@ -9,6 +9,11 @@ export const THEMES = [
     label: "Dark",
     colors: ["#1f2937", "#8b5cf6", "#ec4899", "#1a202c"],
   },
+   {
+    name: "night",
+    label: "Night",
+    colors: ["#0f172a", "#7c3aed", "#f472b6", "#e2e8f0"],
+  },
   {
     name: "cupcake",
     label: "Cupcake",
