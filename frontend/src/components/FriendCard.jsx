@@ -12,8 +12,19 @@ const FriendCard = ({ friend }) => {
         <div className="flex items-center gap-3 mb-3">
           <div className="avatar size-12 rounded-full overflow-hidden">
             <img
-              src={friend.profilePicture || '/default-avatar.png'} // ✅ Fallback
+              src={
+                friend.profilePicture ||
+                friend.profilePic ||
+                `https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(
+                  friend.fullname || 'user'
+                )}`
+              }
               alt={friend.fullname || 'User'}
+              onError={(e) => {
+                e.currentTarget.src = `https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(
+                  friend.fullname || 'user'
+                )}`;
+              }}
             />
           </div>
           <h3 className="font-semibold truncate">{friend.fullname || 'Unnamed'}</h3>
