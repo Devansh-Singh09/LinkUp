@@ -48,8 +48,22 @@ const NotificationsPage = () => {
                          <div className="card-body p-4">
                           <div className="flex items-center justify-between">
                              <div className="flex items-center gap-3">
-                            <div className="avatar w-14 h-14 rounded-full bg-base-300">
-                              <img src={request.sender.profilePicture} alt={request.sender.fullname} />
+                           <div className="avatar w-14 h-14 rounded-full bg-base-300 overflow-hidden">
+                              <img
+                                src={
+                                  request.sender.profilePicture ||
+                                  request.sender.profilePic ||
+                                  `https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(
+                                    request.sender.fullname || 'user'
+                                  )}`
+                                }
+                                alt={request.sender.fullname}
+                                onError={(e) => {
+                                  e.currentTarget.src = `https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(
+                                    request.sender.fullname || 'user'
+                                  )}`;
+                                }}
+                              />
                             </div>
                             <div>
                               <h3 className="font-semibold">{request.sender.fullname}</h3>
