@@ -101,8 +101,22 @@ const HomePage = () => {
                   >
                     <div className="card-body p-5 space-y-4">
                       <div className="flex items-center gap-3">
-                        <div className="avatar size-16 rounded-full">
-                          <img src={user.profilePicture} alt={user.fullname} />
+                       <div className="avatar size-16 rounded-full overflow-hidden">
+                          <img
+                            src={
+                              user.profilePicture ||
+                              user.profilePic ||
+                              `https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(
+                                user.fullname || 'user'
+                              )}`
+                            }
+                            alt={user.fullname}
+                            onError={(e) => {
+                              e.currentTarget.src = `https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(
+                                user.fullname || 'user'
+                              )}`;
+                            }}
+                          />
                         </div>
 
                         <div>
