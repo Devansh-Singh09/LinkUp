@@ -26,8 +26,7 @@ export async function signup(req, res) {
     }
 
 
-    const idx= Math.floor(Math.random() * 100)+1;
-    const randomAvatar=`https://avatar.iran.liara.run/public/${idx}.png`;
+    const randomAvatar = `https://avatarapi.runflare.run/public?usearname=${encodeURIComponent(fullname)}`;
 
     const newUser = await User.create({
         fullname,
@@ -117,7 +116,7 @@ export async function onboard(req, res) {
   try {
     const userId = req.user._id;
 
-    const { fullname, bio, nativeLanguage, learningLanguage, location } = req.body;
+    const { fullname, bio, nativeLanguage, learningLanguage, location,profilePic} = req.body;
 
     if (!fullname || !bio || !nativeLanguage || !learningLanguage || !location) {
       return res.status(400).json({
