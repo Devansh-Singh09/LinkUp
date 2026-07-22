@@ -53,8 +53,16 @@ const Sidebar = () => {
       <div className="p-4 border-t border-base-300 mt-auto">
          <div className="flex items-center gap-3">
             <div className="avatar">
-                 <div className="w-10 rounded-full">
-                     <img src={authUser?.profilePicture} alt="User Avatar" />
+                 <div className="w-10 rounded-full overflow-hidden">
+                     <img
+                       src={
+                         authUser?.profilePicture ||
+                         `https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(
+                           authUser?.fullname || 'user'
+                         )}`
+                       }
+                       alt="User Avatar"
+                     />
                  </div>
             </div>
              <div className="flex-1">
